@@ -45,10 +45,10 @@ async function main() {
 }
 
 
-// app.get("/", (req, res) => {
-//     res.send("I am root Route")
+app.get("/", (req, res) => {
+    res.redirect("/listings")
 
-// })
+})
 
 const store = MongoStore.create({
     mongoUrl:MONGO_DB_URL,
