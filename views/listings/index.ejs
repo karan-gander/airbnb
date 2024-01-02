@@ -1,0 +1,173 @@
+<%layout("layouts/boilerplate")%>
+    <style>
+        #filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .filter{
+            text-align: center;
+            margin-right: 2rem;
+            opacity: 0.8;
+
+        }
+        .filter:hover{
+            opacity: 1;
+            cursor: pointer;
+        }
+        .icon-text{
+            font-size: .8rem;
+        }
+        .carousel-control-prev,.carousel-control-next{
+            background-color: black;
+            width: 50px;
+            border-radius: 50%;
+        }
+        #tax-info{
+            display: none;
+        }
+        
+    </style>
+
+    <body>
+        <!-- fillters -->
+        <div id="filters" class="my-2 py-2">
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    local_fire_department
+                </div>
+                <div class="icon-text" >
+                    Trending
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    Bed
+                </div>
+                <div class="icon-text">
+                    Rooms
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    sailing
+                </div>
+                <div class="icon-text">
+                    Boats
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    Surfing
+                </div>
+                <div class="icon-text">
+                    Surfing
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    beach_access 
+                </div>
+                <div class="icon-text">
+                    Beach
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                   pool
+                </div>
+                <div class="icon-text">
+                    Pool
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    hiking 
+                </div>
+                <div class="icon-text">
+                    Hiking 
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    Landscape 
+                </div>
+                <div class="icon-text">
+                    Mountain
+                </div>
+            </div>
+            <div class="filter">
+                <div class="material-symbols-outlined">
+                    agriculture  
+                </div>
+                <div class="icon-text">
+                    Farm
+                </div>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Total after tax</label>
+              </div>
+        </div>
+
+
+        
+
+        <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 row-cols-1">
+
+            <%for(listing of allLisiting) { %>
+                <a href="/listings/<%=listing._id %>" class="listing-link">
+                    <div class="card col  my-2">
+                        <img src="<%=listing.image.url %>" class="card-img-top" alt="image">
+                        <div class="card-img-overlay"><i class="fa-solid fa-location-dot"></i> &nbsp; &nbsp;
+                            <%=listing.location%>
+                        </div>
+                        <div class="card-body py-3">
+                            <h5 class="py-1">
+                                <%=listing.title%>
+                            </h5>
+                            <p>&#8377; <%=listing.price.toLocaleString("en-INDIA")%>/night &nbsp;<i class="tax-info">+18% tax</i></p> 
+                            <p class="card-text">
+                                <%=listing.description%>
+                            </p>
+                        </div>
+
+                    </div>
+                </a>
+                <%}%>
+
+        </div>
+
+
+
+        <!-- <ul>
+        <%for(listing of allLisiting) { %>
+            <li><a href="/listings/<%=listing._id%>"><%=listing.title%></a></li>
+        <%}%>
+    </ul> -->
+
+    <script>
+        
+        let taxButton = document.getElementById("flexSwitchCheckDefault")
+        taxButton.addEventListener("click",()=>{
+            let taxInfo = document.getElementsByClassName("tax-info") 
+            console.log(taxInfo)
+            for(info of taxInfo){
+                if(info.style.display !== "inline"){
+                    info.style.display = "inline"
+                }
+                else{
+                    info.style.display = "none"
+                }
+            }
+            
+
+        })
+
+    </script>
+
+
+
+    </body>

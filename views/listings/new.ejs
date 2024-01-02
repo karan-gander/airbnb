@@ -1,0 +1,130 @@
+<%layout("layouts/boilerplate")%>
+
+    <body>
+        <div class="row">
+            <div class="offset-2 py-4 col-8">
+                <h3>Create a new listing</h3>
+
+                <form action="/listings" method="post" novalidate class="needs-validation" autocomplete="off" enctype="multipart/form-data">
+                    <div class="mb-2">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="listing[title]" class="form-control" placeholder="Enter The Title" required>
+                        <div class="valid-feedback">Title Looks Good!</div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="description" class="form-label">description</label>
+                        <textarea name="listing[description]" id="" cols="30" rows="4" placeholder="Enter Description"
+                            class="form-control" required></textarea>
+                            <div class="invalid-feedback">Please write a short description</div>
+                    </div>
+
+
+                    
+                    <div class="mb-2">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" name="listing[image]" placeholder=""
+                            class="form-control" required>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" class="form-control" name="listing[price]" placeholder="1200" required >
+                            <div class="invalid-feedback">Price should be valid</div>
+
+                        </div>
+
+                        <div class="mb-2 col-md-8">
+                            <label for="listing" class="form-label">Country</label>
+                            <input type="text" name="listing[country]" placeholder="India" class="form-control" required>
+                            <div class="invalid-feedback">Country should be valid</div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-2">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" class="form-control" placeholder="Jodhpur, Rajasthan" required>
+                        <div class="invalid-feedback">Location should be valid</div>
+                    </div>
+                    <div class="mb-2 py-2 d-flex flex-wrap align-items-center">
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="hiking" id="hiking" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="hiking">
+                              <span class="material-symbols-outlined">hiking</span> Hiking
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="boat" id="sailing" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="sailing">
+                                <span class="material-symbols-outlined">sailing</span> Boats
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="rooms" id="rooms" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="rooms">
+                                <span class="material-symbols-outlined">bed</span> Rooms
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="surfing" id="surfing" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="surfing">
+                                <span class="material-symbols-outlined">surfing</span> Surfing
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="beach" id="beach" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="beach">
+                                <span class="material-symbols-outlined">beach_access</span> Beach
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="pool" id="pool" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="pool">
+                                <span class="material-symbols-outlined">pool</span> Pool
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="mountain" id="mountain" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="mountain">
+                                 <span class="material-symbols-outlined">Landscape</span> Mountain
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="farm" id="farm" name="listing[category]" onclick="handleCheckbox(this)">
+                            <label class="form-check-label" for="farm">
+                                <span class="material-symbols-outlined">agriculture</span> Farm
+                            </label>
+                          </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="trending" id="trending" name="listing[category]" onclick="handleCheckbox(this)">
+                            
+                            <label class="form-check-label" for="trending">
+                                <span class="material-symbols-outlined">local_fire_department</span> Trending
+                            </label>
+                          </div>
+                    </div>
+
+                    <button class="btn add-btn">Add</button>
+                </form>
+            </div>
+        </div>
+
+     <script>
+
+        function handleCheckbox(clickedCheckbox){
+            let checkboxes = document.getElementsByName(clickedCheckbox.name)
+            console.log(checkboxes)
+            console.log(clickedCheckbox)
+            checkboxes.forEach(checkbox => {
+                if(checkbox !== clickedCheckbox){
+                    checkbox.checked = false
+                }
+                
+            });
+        }
+
+     </script>
+    </body>
